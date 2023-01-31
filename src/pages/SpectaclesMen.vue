@@ -3,6 +3,8 @@
         <div v-if="!isProductsLoading">
             <page-title-panel
                 title="Spectacles Men"
+                :colors="this.colorFilter"
+                :shapes="this.shapeFilter"
                 @setFilter="setColorFilter"
                 @setShapeFilter="setColorFilter"
             />
@@ -51,7 +53,7 @@ export default {
             }else {
                 this.colorFilter=[...this.colorFilter, filter.value]
             }
-            this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
+            this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter,true)
         },
         setShapeFilter(filter) {
             if(this.shapeFilter.includes(filter.value)){
@@ -59,7 +61,7 @@ export default {
             }else {
                 this.shapeFilter=[...this.shapeFilter, filter.value]
             }
-            this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
+            this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter,true)
         }
     },
     mounted() {

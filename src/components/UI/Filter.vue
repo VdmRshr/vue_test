@@ -36,8 +36,8 @@ export default {
             this.$emit('setFilter', filter)
         },
         isActiveItems(val) {
-            console.log(val, this.checkedItems)
-            return true
+            if(this.checkedItems.length>0)return this.checkedItems.includes(val)
+            return null
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="pageTitlePanel">
-            <div>{{title2}}</div>
+            <div></div>
             <h1>{{ title }}</h1>
             <div class="pageTitlePanel__filters">
                 <styled-button
@@ -11,6 +11,13 @@
                 </styled-button>
                 <styled-button @click="showShapeFilter">
                     shape
+                </styled-button>
+                <styled-button
+                    @click="clearFilterEmitter"
+                    style="border-right: none"
+                    v-show="colors.length>0 || shapes.length>0"
+                >
+                    clear filter
                 </styled-button>
             </div>
         </div>
@@ -24,7 +31,7 @@
             :items="this.shapeFilterItems"
             :show="shapeFilterVisible"
             @setFilter="setShapeFilterEmitter($event)"
-            :checked-items="shapes"
+            :checked-items="this.colors"
         />
     </div>
 </template>
@@ -40,11 +47,8 @@ export default {
         title: {
             type: String
         },
-        title2: {
-            type: String
-        },
         colors: {
-            type: String
+            type: Array
         },
         shapes: {
             type: Array
@@ -60,7 +64,6 @@ export default {
     },
     methods: {
         showColorFilter() {
-            console.log('qwer', this.colors)
             this.colorFilterVisible = !this.colorFilterVisible;
         },
         showShapeFilter() {
@@ -71,6 +74,9 @@ export default {
         },
         setShapeFilterEmitter(filter) {
             this.$emit('setShapeFilter', filter)
+        },
+        clearFilterEmitter() {
+            this.$emit('clearFilter')
         }
     },
     components: {StyledButton},
@@ -95,6 +101,22 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
+}
+@media screen and (max-width: 1024px) {
+    .pageTitlePanel {
+        grid-template-columns: 1fr ;
+        border-bottom: none;
+    }
+    .pageTitlePanel h1{
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #000000;
+    }
+    .pageTitlePanel__filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom: 1px solid #000000;
+    }
 }
 
 </style>

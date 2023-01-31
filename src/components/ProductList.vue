@@ -36,15 +36,24 @@ export default {
 </script>
 
 <style scoped>
-.list{
+.list {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
 }
+
 .emptyMsg {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
+}
+
+@media screen and (max-width: 768px) {
+    .list {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
 }
 
 </style>

@@ -38,7 +38,6 @@ export default {
     },
     methods: {
         onSubMenuOpen(id) {
-            console.log(id)
             this.activeId = id
         }
     }
@@ -63,4 +62,21 @@ export default {
     top: 0;
     border-top: none;
 }
+@media screen and (max-width: 960px) {
+    .menu{
+        width: 300px;
+    }
+    .menu.sub-menu {
+        left: 300px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .menu{
+        width: 100%;
+    }
+    .menu.sub-menu {
+        left: 50%
+    }
+}
+
 </style>

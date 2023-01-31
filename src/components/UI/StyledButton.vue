@@ -6,7 +6,12 @@
 
 <script>
 export default {
-    name: 'styled-button'
+    name: 'styled-button',
+    // props:{
+    //     show:{
+    //         type:Boolean
+    //     }
+    // }
 }
 </script>
 
