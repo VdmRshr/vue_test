@@ -1,35 +1,26 @@
-
+import {pathes } from "@/constants/pathes";
 import {createRouter, createWebHistory} from "vue-router";
 import SpectaclesWomen from "@/pages/SpectaclesWomen.vue";
+import SpectaclesMen from "@/pages/SpectaclesMen.vue";
+import SunglassesWomen from "@/pages/SunglassesWomen.vue";
+import SunglassesMen from "@/pages/SunglassesMen.vue";
 
 
 
 const routes = [
     {
-        path: '/',
+        path: pathes['SpectaclesWomen'],
         component: SpectaclesWomen
+    },{
+        path: pathes['SpectaclesMen'],
+        component: SpectaclesMen
+    },{
+        path: pathes['SunglassesWomen'],
+        component: SunglassesWomen
+    },{
+        path: pathes['SunglassesMen'],
+        component: SunglassesMen
     },
-    // {
-    //     path: '/posts',
-    //     component: UserPage
-    // },
-    // {
-    //     path: '/about',
-    //     component: About
-    // },
-    // {
-    //     path: '/posts/:id',
-    //     component: PostIdPage
-    // },
-    // {
-    //     path: '/store',
-    //     component: PostPageWithStore
-    // },
-    // {
-    //     path: '/composition',
-    //     component: PostPageCompositionApi
-    // },
-
 ]
 
 

@@ -2,13 +2,9 @@
     <div>
         <div v-if="!isProductsLoading">
             <page-title-panel
-                title="Spectacles women"
-                title2="Spectacles women"
-
-                :shapes="this.shapeFilter"
+                title="sunglasses women"
                 @setFilter="setColorFilter"
                 @setShapeFilter="setColorFilter"
-
             />
             <product-list
                 :products="products"
@@ -28,14 +24,13 @@ import StoreLoader from "@/components/UI/Loader.vue";
 
 const page = ref(1)
 export default {
-    name: "SpectaclesWomen",
+    name: "SunglassesWomen",
     components: {StoreLoader, ProductList, PageTitlePanel},
     data() {
         return {
-            category: '/spectacles-women',
-            colorFilter: [],
-            colorFilter1: 1234,
-            shapeFilter: [],
+            category: '/sunglasses-women',
+            colorFilter:[],
+            shapeFilter:[],
         }
     },
     setup(props) {
@@ -51,26 +46,25 @@ export default {
             this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
         },
         setColorFilter(filter) {
-            if (this.colorFilter.includes(filter.value)) {
-                this.colorFilter = this.colorFilter.filter(e => e !== filter.value)
-            } else {
-                this.colorFilter = [...this.colorFilter, filter.value]
+            if(this.colorFilter.includes(filter.value)){
+                this.colorFilter=this.colorFilter.filter(e => e !== filter.value)
+            }else {
+                this.colorFilter=[...this.colorFilter, filter.value]
             }
             this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
         },
         setShapeFilter(filter) {
-            if (this.shapeFilter.includes(filter.value)) {
-                this.shapeFilter = this.shapeFilter.filter(e => e !== filter.value)
-            } else {
-                this.shapeFilter = [...this.shapeFilter, filter.value]
+            if(this.shapeFilter.includes(filter.value)){
+                this.shapeFilter=this.shapeFilter.filter(e => e !== filter.value)
+            }else {
+                this.shapeFilter=[...this.shapeFilter, filter.value]
             }
             this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
         }
     },
     mounted() {
         this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
-    },
-
+    }
 }
 </script>
 

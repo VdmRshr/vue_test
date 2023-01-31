@@ -1,7 +1,14 @@
 <template>
     <header class="header">
-        <div class="header__menu">menu</div>
-        <div class="header__logo"><img :src="logo" alt="logo"/></div>
+        <div :class="['header__menu', {'active':isOpen}]"
+             @mouseover="mouseover"
+             @mouseleave="mouseleave"
+        >
+            menu
+        </div>
+        <div class="header__logo">
+            <img :src="logo" alt="logo"/>
+        </div>
     </header>
 </template>
 
@@ -13,7 +20,13 @@ export default {
         return {
             logo: logo
         }
+    },
+    props:{
+        mouseover:Function,
+        mouseleave:Function,
+        isOpen:Boolean
     }
+
 }
 </script>
 
@@ -31,9 +44,12 @@ export default {
 
 .header__menu {
     cursor: pointer;
+    width: 100px;
+    height: 100%;
+    line-height: 60px;
 }
 
-.header__menu-active {
+.header__menu.active {
     text-decoration: underline;
 }
 

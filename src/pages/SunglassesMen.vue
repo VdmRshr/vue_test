@@ -2,13 +2,9 @@
     <div>
         <div v-if="!isProductsLoading">
             <page-title-panel
-                title="Spectacles women"
-                title2="Spectacles women"
-
-                :shapes="this.shapeFilter"
+                title="Sunglasses Men"
                 @setFilter="setColorFilter"
                 @setShapeFilter="setColorFilter"
-
             />
             <product-list
                 :products="products"
@@ -28,13 +24,12 @@ import StoreLoader from "@/components/UI/Loader.vue";
 
 const page = ref(1)
 export default {
-    name: "SpectaclesWomen",
+    name: "SunglassesMen",
     components: {StoreLoader, ProductList, PageTitlePanel},
     data() {
         return {
-            category: '/spectacles-women',
+            category: '/sunglasses-men',
             colorFilter: [],
-            colorFilter1: 1234,
             shapeFilter: [],
         }
     },
@@ -69,8 +64,7 @@ export default {
     },
     mounted() {
         this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter)
-    },
-
+    }
 }
 </script>
 

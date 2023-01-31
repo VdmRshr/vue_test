@@ -1,3 +1,5 @@
+import {pathes} from "@/constants/pathes";
+
 export const menuItems = [
     {
         id: 1,
@@ -5,11 +7,13 @@ export const menuItems = [
         sub: [
             {
                 id: 1,
-                title: 'women'
+                title: 'women',
+                link: pathes['SpectaclesWomen']
             },
             {
                 id: 2,
-                title: 'men'
+                title: 'men',
+                link: pathes['SpectaclesMen']
             },
         ]
     },
@@ -19,25 +23,13 @@ export const menuItems = [
         sub: [
             {
                 id: 1,
-                title: 'women'
+                title: 'women',
+                link: pathes['SunglassesWomen']
             },
             {
                 id: 2,
-                title: 'men'
-            },
-        ]
-    },
-    {
-        id: 2,
-        title: 'Sunglasses',
-        sub: [
-            {
-                id: 1,
-                title: 'women'
-            },
-            {
-                id: 2,
-                title: 'men'
+                title: 'men',
+                link: pathes['SunglassesMen']
             },
         ]
     },

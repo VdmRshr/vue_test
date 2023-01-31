@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="pageTitlePanel">
-            <div></div>
+            <div>{{title2}}</div>
             <h1>{{ title }}</h1>
             <div class="pageTitlePanel__filters">
                 <styled-button
@@ -9,19 +9,23 @@
                 >
                     colour
                 </styled-button>
-                <styled-button @click="shapeColorFilter">
+                <styled-button @click="showShapeFilter">
                     shape
                 </styled-button>
             </div>
         </div>
         <store-filter
             :items="this.colorFilterItems"
-            v-model:show="colorFilterVisible"
-            @setFilter="$emit('setColorFilter',filter)"
+            :show="colorFilterVisible"
+            @setFilter="setColorFilterEmitter($event)"
+            :checked-items="this.colors"
         />
         <store-filter
             :items="this.shapeFilterItems"
-            v-model:show="shapeFilterVisible"/>
+            :show="shapeFilterVisible"
+            @setFilter="setShapeFilterEmitter($event)"
+            :checked-items="shapes"
+        />
     </div>
 </template>
 
@@ -35,6 +39,15 @@ export default {
     props: {
         title: {
             type: String
+        },
+        title2: {
+            type: String
+        },
+        colors: {
+            type: String
+        },
+        shapes: {
+            type: Array
         }
     },
     data() {
@@ -47,15 +60,20 @@ export default {
     },
     methods: {
         showColorFilter() {
+            console.log('qwer', this.colors)
             this.colorFilterVisible = !this.colorFilterVisible;
         },
-        shapeColorFilter() {
+        showShapeFilter() {
             this.shapeFilterVisible = !this.shapeFilterVisible;
         },
+        setColorFilterEmitter(filter) {
+            this.$emit('setFilter', filter)
+        },
+        setShapeFilterEmitter(filter) {
+            this.$emit('setShapeFilter', filter)
+        }
     },
     components: {StyledButton},
-
-
 }
 </script>
 

@@ -1,9 +1,10 @@
 <template>
-    <div class="filter" @change="changeOption" v-if="show">
-        <div class="filter__item"
+    <div class="filter" v-if="show">
+        <div
             v-for="item in items"
+            :class="['filter__item',{'active': isActiveItems(item.value)}]"
             :key="item.id"
-             @click="$emit('setFilter',  item.name)"
+            @click="setFilterEmitter(item)"
         >
             {{ item.name }}
         </div>
@@ -22,17 +23,21 @@ export default {
             type: Array,
             default: () => []
         },
+        checkedItems: {
+            type: Array
+        },
         setFilter: {
             type: Function
         }
     },
 
     methods: {
-        changeOption(event) {
-            this.$emit('update:modelValue', event.target.value);
+        setFilterEmitter(filter) {
+            this.$emit('setFilter', filter)
         },
-        setFilter(){
-            console.log()
+        isActiveItems(val) {
+            console.log(val, this.checkedItems)
+            return true
         }
     }
 }
@@ -42,15 +47,17 @@ export default {
 .filter {
     border-bottom: 1px solid #000000;
     height: 60px;
-    display:flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     transition: all 5s ease;
 }
-.filter__item{
+
+.filter__item {
     cursor: pointer;
 }
-.filter__item-active{
+
+.filter__item.active {
     text-decoration: underline;
 }
 </style>
