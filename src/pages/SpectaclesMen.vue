@@ -7,6 +7,7 @@
                 :shapes="this.shapeFilter"
                 @setFilter="setColorFilter"
                 @setShapeFilter="setColorFilter"
+                @clearFilter="clearFilter"
             />
             <product-list
                 :products="products"
@@ -62,6 +63,12 @@ export default {
                 this.shapeFilter=[...this.shapeFilter, filter.value]
             }
             this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter,true)
+        },
+        clearFilter(){
+            this.colorFilter=[]
+            this.shapeFilter=[]
+            this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter,true)
+
         }
     },
     mounted() {

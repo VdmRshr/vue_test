@@ -68,6 +68,8 @@ export default {
         clearFilter(){
             this.colorFilter=[]
             this.shapeFilter=[]
+            this.fetching(this.category, page.value, this.colorFilter, this.shapeFilter,true)
+
         }
     },
     mounted() {
